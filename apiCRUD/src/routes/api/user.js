@@ -1,5 +1,24 @@
-const db = require('./db');
+const user = require('../../models/user');
 
-exports.create = (payload, err, success) => {
-	db.user.creates(payload).then(success).catch(err);
+
+module.exports = (express) => {
+	const router = express.Router();
+
+
+	router.get('/users', (req, res) => {
+		res.json({
+			
+		})
+	});
+
+	//create
+	router.post('/users', (req, res) => {
+		user.create(req.body, (err) => {
+			res.status(500).json(err);
+		}, (data) =>{
+			res.status(200).json(data);
+		})
+	});
+
+	return router;
 }

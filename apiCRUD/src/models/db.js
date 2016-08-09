@@ -9,12 +9,12 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 		max: 5,
 		min: 0,
 		idle: 10000,
-	}
-	loggin: false,
+	},
+	logging: false,
 	});
 
 
-const user -sequelize.define('user',{
+const user = sequelize.define('user',{
 	name: {
 		type: Sequelize.STRING,
 	},
@@ -26,7 +26,7 @@ const user -sequelize.define('user',{
 	}
 });
 
-const course -sequelize.define('course',{
+const course = sequelize.define('course',{
 	name: {
 		type: Sequelize.STRING,
 	},

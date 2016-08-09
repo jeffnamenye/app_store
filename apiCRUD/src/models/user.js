@@ -1,27 +1,11 @@
-const user = require('../../models/user');
+const db = require('./db');
 
-
-
-
-module.exports = (express) => {
-	const router = express.Router();
-
-
-
-
-	router.get('/users', (req, res) => {
-		res.json({
-			healthy: true,
-		})
-	});
-
-	router.post('/users', (req, res) =>{
-		user.create(req.body, (err) =>{
-			res.status(500).json(err);
-		}), (data) =>{
-			res.status(200).json(data);
-		}
-	});
-
-	return router;
+exports.create = (payload, err, success) => {
+	db.user.create(payload).then(success).catch(err);
 }
+
+
+exports.findAll = (err, success) => {
+	db.user.findAll().then(success).catch(err);
+}
+
